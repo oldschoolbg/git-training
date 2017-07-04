@@ -6,7 +6,6 @@ remote [[ On the server ]]
     vvv
 master (or Fixes-Implemented) [[ local tracking branch ]] ------> feature/defect branch [[ working code ]]
 
-
 -------------------------
 
 - you should commit to your working code every 20 minutes at the longest. this process is what you do -
