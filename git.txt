@@ -1,0 +1,85 @@
+https://git-for-windows.github.io/
+
+CONCEPT
+
+remote [[ On the server ]]
+    vvv
+master (or Fixes-Implemented) [[ local tracking branch ]] ------> feature/defect branch [[ working code ]]
+
+
+-------------------------
+
+- you should commit to your working code every 20 minutes at the longest. this process is what you do -
+
+git status
+
+[[ if you have untracked files you want including in the repo ]]
+
+git add -A .
+git status
+
+[[ if you have files which have changed ]]
+
+git commit -am "your descriptive one line description of the changes you are committing"
+git status
+
+git checkout Fixes-Implemented [[ or whatever 'master' is called ]]
+git status
+
+git pull origin
+git status
+
+git checkout feature-branch-name
+
+[[ if you did pull something down from remote then do the following ]]
+
+git merge Fixes-Implemented
+
+-------------------------------
+
+
+-------------------------------
+
+MERGE CONFLICTS (initial setup)
+
+https://www.perforce.com/products/helix-apps/merge-diff-tool-p4merge
+
+git config --global merge.tool p4merge
+git config --global difftool.p4merge.path 'C:\Program Files\Perforce\p4merge.exe'
+git config --global mergetool.p4merge.trustExitCode false
+git config --global mergetool.keepBackup false
+
+MERGE CONFLICTS
+
+git mergetool
+
+[[ then cycle through all conflicts ]]
+
+git commit -am "Merge result"
+
+COMMANDS SUMMARY
+
+git status                              >> THE most important command
+git branch                              >> lists all current branches
+git branch -b newBranchName             >> create new branch
+git branch -d branchName                >> delete branch
+git checkout branchName                 >> swap to branchName
+git pull origin                         >> update from remote
+git merge branchName                    >> pull _from_ branchName into current branch
+git add -A .                            >> add _all_ currently untracked files to repository (does NOT commit)
+git commit -am "message"                >> commits all tracked files with changes, associating with message
+git mergetool                           >> starts the mergetool to resolve conflicts manually
+git reset --hard                        >> reverts current branch to last committed version (does NOT delete untracked files)
+git clean -f                            >> deletes all untracked files; dangerous!
+git checkout [HASH]                     >> opens a specific version as a temporary branch
+git stash                               >> stores current changes in a temporary branch (does NOT add untracked files)
+git stash pop                           >> applies changes previously stashed and removes temporary branch
+git clone repositoryName                >> clones repository from remote
+
+-------------------------------
+
+REBASING
+
+https://git-scm.com/blog/2010/03/08/rerere.html
+
+Always check out the link above ^^^^
